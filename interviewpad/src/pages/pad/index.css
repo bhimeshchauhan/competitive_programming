@@ -1,0 +1,42 @@
+.Pad {
+  position: absolute;
+  margin: auto;
+  top: 5%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+  height: 80%;
+  background-color: #343B3F;
+  border-radius: 3px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+
+  /* -moz-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+	-webkit-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+	box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)";
+  zoom: 1; */
+  
+  display: flex;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  border-radius: 4px;
+  background-color: rgba(231, 231, 231, .5);
+  -webkit-box-shadow: 0 0 1px rgba(231, 231, 231, .5);
+}
+
+/* Slider */
+
+.carousel {
+  width: 100%;
+}
