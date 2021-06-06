@@ -1,13 +1,15 @@
+import twoSum from './question/twoSum.md';
+import numberOfIslands from './question/numberOfIslands.md';
 const question = [
     {
         'name': 'Two Sum',
-        'question': './question/twoSum.md',
+        'path': twoSum,
         'difficulty': 0
     },
     {
         'name': 'Number of Islands',
-        'question': './question/twoSum.md',
-        'difficulty': 0
+        'path': numberOfIslands,
+        'difficulty': 1
     }
 ]
 

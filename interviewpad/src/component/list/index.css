@@ -1,9 +1,11 @@
 .List {
     flex: 0 0 100%;
+    text-align: left;
 }
 
 .ListItem.list-group-item {
     border-radius: 0;
+    padding-left: 3%;
     outline: none;
     background-color: #343B3F;
     color: #e7e7e7;
@@ -29,7 +31,7 @@
   
 .ListItem.list-group-item:hover {
     -webkit-transform: scale(1.25, 1.25);
-    transform: scale(1.15, 1.15);
+    transform: scale(1.05, 1.05);
 }
 
 
