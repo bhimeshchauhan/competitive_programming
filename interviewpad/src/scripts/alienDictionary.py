@@ -42,16 +42,20 @@ class Solution:
 		refer_dict = {}
 		for idx, val in enumerate(order):
 			refer_dict[val] = idx
-		for idx in range(len(words)):
+		for idx in range(len(words)-1):
 			for jdx in range(len(words[idx])):
 				if jdx >= len(words[idx + 1]):
 					return False
 				if words[idx][jdx] != words[idx + 1][jdx]:
 					if refer_dict[words[idx][jdx]] > refer_dict[words[idx + 1][jdx]]:
 						return False
+					break
+		return True
 
 
 if __name__ == "__main__":
-	words = ["word", "world", "row"]
-	order = "worldabcefghijkmnpqstuvxyz"
+	words = ["hello", "leetcode"]
+	order = "hlabcdefgijkmnopqrstuvwxyz"
+	# words = ["word", "world", "row"]
+	# order = "worldabcefghijkmnpqstuvxyz"
 	print(Solution().isAlienSorted(words, order))
