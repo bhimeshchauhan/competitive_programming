@@ -41,7 +41,7 @@ instructions[i] is 'G', 'L' or, 'R'.
 
 class Solution:
     def isRobotBounded(self, instructions: str) -> bool:
-         # initial poition
+        # initial poition
         x = y = 0
         # intially facing north
         direction = 0
