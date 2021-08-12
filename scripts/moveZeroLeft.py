@@ -6,7 +6,7 @@ The array has to be modified in-place.
 """
 
 class Solution():
-    def main(arr):
+    def main(self, arr):
         ptr_one = len(arr) - 2
         ptr_two = len(arr) - 1
         while ptr_one >= 0:
@@ -18,5 +18,5 @@ class Solution():
     
 if __name__ == "__main__":
     arr = [0, 10, 20, 0, 59, 63, 0, 88, 0]
-    Solution.main(arr)
+    Solution().main(arr)
     print(arr)
