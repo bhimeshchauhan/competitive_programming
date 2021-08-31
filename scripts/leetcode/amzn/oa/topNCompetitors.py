@@ -17,27 +17,27 @@ Return a list of strings representing Amazon's top N competitors in order of mos
 
 Note
 The comparison of strings is case-insensitive. If the value of topNCompetitors is more than the number of competitors discussed in the reviews then output the names of only the competitors mention.
-If competitors have the same count (e.g. newshop=2, shopnow=2, mymarket=4), sort alphabetically. topNCompetitors=2, Output=[mymarket, newshop]
+If competitors have the same count (e.g. newsh'op=2, shopnow=2, mymarket=4), sort alphabetically. topNCompetitors=2, Output=[mymarket, newsh'op]
 
 Example
 Input:
 numCompetitors=6
 topNCompetitors = 2
-competitors = [newshop, shopnow, afashion, fashionbeats, mymarket, tcellular]
+competitors = [newsh'op, shopnow, afashion, fashionbeats, mymarket, tcellular]
 numReviews = 6
 reviews = [
-"newshop is providing good services in the city; everyone should use newshop",
-"best services by newshop",
+"newsh'op is providing good services in the city; everyone should use newsh'op",
+"best services by newsh'op",
 "fashionbeats has great services in the city",
 "I am proud to have fashionbeats",
 "mymarket has awesome services",
-"Thanks Newshop for the quick delivery"]
+"Thanks newsh'op for the quick delivery"]
 
 Output
-["newshop", "fashionbeats"]
+["newsh'op", "fashionbeats"]
 
 Explanation
-"newshop" is occurring in 3 different reviews. "fashionbeats" is occuring in 2 different user reviews and "mymarket" is occurring in only 1 review.
+"newsh'op" is occurring in 3 different reviews. "fashionbeats" is occuring in 2 different user reviews and "mymarket" is occurring in only 1 review.
 
 
 """
@@ -92,13 +92,13 @@ Explanation
 #     return [heapNode.competitor for heapNode in heapHash.values()]
 
 # if __name__ == '__main__':
-#     print(topNumCompetitors(6, 2, ['newshop', 'shopnow', 'afashion', 'fashionbeats', 'mymarket', 'tcellular'], 6,  [
-# "newshop is providing good services in the city; everyone should use newshop",
-# "best services by newshop",
+#     print(topNumCompetitors(6, 2, ['newsh'op', 'shopnow', 'afashion', 'fashionbeats', 'mymarket', 'tcellular'], 6,  [
+# "newsh'op is providing good services in the city; everyone should use newsh'op",
+# "best services by newsh'op",
 # "fashionbeats has great services in the city",
 # "I am proud to have fashionbeats",
 # "mymarket has awesome services",
-# "Thanks Newshop for the quick delivery"])) # Output ['newshop', 'fashionbeats']
+# "Thanks newsh'op for the quick delivery"])) # Output ['newsh'op', 'fashionbeats']
     
     
 def topcompetitors(numComp, topComp, comps, numReviews, reviews):
@@ -129,15 +129,15 @@ def topcompetitors(numComp, topComp, comps, numReviews, reviews):
 
 numComp = 6
 topComp = 2
-comps = ['newshop', 'shopnow', 'afashion', 'fashionbeats', 'mymarket', 'tcellular']
+comps = ['newsh\'op', 'shopnow', 'afashion', 'fashionbeats', 'mymarket', 'tcellular']
 numReviews = 6
 reviews = [
-    "newshop is providing good services in the city; everyone should use newshop",
-    "best services by newshop",
+    "newsh'op is providing good services in the city; everyone should use newsh'op",
+    "best services by newsh'op",
     "fashionbeats has great services in the city",
     "I am proud to have fashionbeats",
-    "newshop has awesome services",
-    "Thanks newshop for the quick delivery"]
+    "newsh'op has awesome services",
+    "Thanks newsh'op for the quick delivery"]
 
 print(topcompetitors(numComp, topComp, comps, numReviews, reviews))
 
