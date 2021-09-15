@@ -38,7 +38,7 @@ grid[i][j] is either 0 or 1.
 from collections import defaultdict
 
 class Solution:
-    def largestIsland(self, grid: List[List[int]]) -> int:
+    def largestIsland(self, grid):
         visited, number = set(), 2
         #Run DFS
         for i in range(len(grid)):
@@ -68,7 +68,7 @@ class Solution:
             largeIsland = max(largeIsland, total)
         return largeIsland
 
-    def dfs(self, grid: List[List[int]], visited: set, x, y, groupNumber = 2) -> None:
+    def dfs(self, grid, visited, x, y, groupNumber = 2):
         grid[x][y] = groupNumber
         direction = [(0,1), (0,-1), (1,0), (-1,0)]
         for (dx,dy) in direction:
