@@ -39,7 +39,6 @@ Constraints:
 
 class Solution:
     def checkSubarraySum(self, nums, k):
-         def checkSubarraySum(self, nums, k):
         d = {0:-1}
         sums = 0
 
