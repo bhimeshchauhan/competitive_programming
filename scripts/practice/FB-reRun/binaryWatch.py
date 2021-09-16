@@ -37,10 +37,6 @@ Constraints:
 
 """
 
-
-
-
-
 """
 Time: O(1)
 Space: O(1), no "extra" space are used.
@@ -50,8 +46,8 @@ class Solution(object):
         ans = []
         if turnedOn>8: return ans #at most 8 LED are turned on for a valid time.
 
-        for h in xrange(12):
-            for m in xrange(60):
+        for h in range(12):
+            for m in range(60):
                 if (bin(h) + bin(m)).count('1')==turnedOn:
                     ans.append('%d:%02d' % (h, m))
         return ans
@@ -60,3 +56,4 @@ class Solution(object):
 Related Problems:
 Binary Watch
 Next Closest Time
+"""
