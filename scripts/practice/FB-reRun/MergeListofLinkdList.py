@@ -63,6 +63,7 @@ Repeat until the heap is empty.
 
 """
 
+import heapq
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         head = ListNode(None)
