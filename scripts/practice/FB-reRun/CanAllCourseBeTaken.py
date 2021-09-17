@@ -33,7 +33,7 @@ All the pairs prerequisites[i] are unique.
 
 """
 
-# Backtracking
+# Backtracking - TLE
 class Solution(object):
     def canFinish(self, numCourses, prerequisites):
         """
