@@ -47,6 +47,12 @@ class Solution:
         lo, hi = 0, n
         
         while lo < hi:
+            """
+            If you are setting mid = (left+right)//2,you have to be very careful. 
+            Unless you are using a language that does not overflow such as Python, 
+            left + right could overflow. 
+            One way to fix this is to use left + ((right - left)// 2) instead.
+            """
             mid = lo+(hi-lo)//2
             if isBadVersion(mid):
                 hi = mid
