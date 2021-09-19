@@ -40,11 +40,15 @@ Constraints:
 class Solution:
     def nextPermutation(self, nums):
         i = j = len(nums)-1
+        # To Check if the number is in sorted descending order
+        # If so we return the reverse of the number
         while i > 0 and nums[i-1] >= nums[i]:
             i -= 1
         if i == 0:   # nums are in descending order
             nums.reverse()
             return 
+        
+        # Get the first decreasing number / last ascending position
         k = i - 1    # find the last "ascending" position
         while nums[j] <= nums[k]:
             j -= 1
