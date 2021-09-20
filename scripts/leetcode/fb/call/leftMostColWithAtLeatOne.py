@@ -59,6 +59,8 @@ mat[i] is sorted in non-decreasing order.
 #    def get(self, row: int, col: int) -> int:
 #    def dimensions(self) -> list[]:
 
+# Time: O(NlogM)
+# Space: O(1)
 class Solution:
     def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
         rows, cols = binaryMatrix.dimensions()
