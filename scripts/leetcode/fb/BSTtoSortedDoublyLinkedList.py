@@ -82,3 +82,32 @@ class Solution:
         return first
     
 
+# Iteration
+
+def treeToDoublyList(self, root: 'Node') -> 'Node':
+    
+    if not root:
+        return None
+    
+    stack = [root]
+    first, curr, last = None, root.left, None
+    
+    while curr or stack:
+        if curr:
+            stack.append(curr)
+            curr = curr.left
+            continue
+        if stack:
+            curr = stack.pop()
+            if not first:
+                first = curr
+            if last:
+                last.right = curr
+                curr.left = last
+            last = curr
+            curr = curr.right
+    
+    first.left = last
+    last.right = first
+    
+    return first
