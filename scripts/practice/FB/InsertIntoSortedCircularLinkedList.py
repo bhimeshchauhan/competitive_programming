@@ -50,6 +50,7 @@ class Node:
         self.next = next
 """
 
+# 2 Pointers
 class Solution:
     def insert(self, head: 'Node', insertVal: int) -> 'Node':
 
@@ -84,4 +85,46 @@ class Solution:
         # Case #3.
         # did not insert the node in the loop
         prev.next = Node(insertVal, curr)
+        return head
+    
+    
+# Not 2 pointer
+
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, next=None):
+        self.val = val
+        self.next = next
+"""
+
+class Solution:
+    def insert(self, head: 'Node', insertVal: int) -> 'Node':
+        if not head:
+            head = Node(insertVal)
+            head.next = head
+            return head
+        
+        curr = head
+
+        while True:
+            if curr.val <= insertVal <= curr.next.val:
+                break
+            
+            # last element
+            if curr.val>curr.next.val:
+                if insertVal >= curr.val:
+                    break
+                elif insertVal <= curr.next.val:
+                    break
+                    
+            curr = curr.next 
+            # all elements are equal
+            if curr == head:
+                break
+
+        new_node = Node(insertVal)
+        tmp = curr.next
+        curr.next = new_node
+        new_node.next = tmp
         return head
