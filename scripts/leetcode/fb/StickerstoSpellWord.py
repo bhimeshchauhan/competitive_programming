@@ -42,6 +42,36 @@ stickers[i] and target consist of lowercase English letters.
 
 """
 
+# Solution
+
+class Solution:
+    def minStickers(self, stickers: List[str], target: str) -> int:
+        # stickers.sort(key = lambda x: len(x))
+        stickers = [collections.Counter(x) for x in stickers]
+        memo = {}
+        
+        def dfs(target):
+            if target in memo:
+                return memo[target]
+            res = float('inf')
+            for sticker in stickers:
+                if target[0] not in sticker:      
+                    continue
+                newTarget = target;
+                for s in sticker:
+                    newTarget = newTarget.replace(s, "", sticker[s])
+                if newTarget == "":
+                    res = 1
+                    break
+                elif newTarget != target:
+                    res = min(res, 1 + dfs(newTarget))
+            memo[target] = res
+            return res
+                            
+        
+        res = dfs(target)
+        return -1 if res == float('inf') else res
+
 # DFS
 
 class Solution:
