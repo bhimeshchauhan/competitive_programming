@@ -50,6 +50,7 @@ Space complexity: O(1) because the array directions contains only 4 elements.
 
 """
 
+
 class Solution:
     def isRobotBounded(self, instructions: str) -> bool:
         directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]
