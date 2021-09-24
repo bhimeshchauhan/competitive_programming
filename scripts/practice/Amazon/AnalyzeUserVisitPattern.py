@@ -31,7 +31,9 @@ website = ["home","about","career","home","cart","maps","home","home","about","c
 Output: ["home","about","career"]
 
 Explanation: The tuples in this example are:
-["joe","home",1],["joe","about",2],["joe","career",3],["james","home",4],["james","cart",5],["james","maps",6],["james","home",7],["mary","home",8],["mary","about",9], and ["mary","career",10].
+["joe","home",1],["joe","about",2],["joe","career",3],["james","home",4],
+["james","cart",5],["james","maps",6],["james","home",7],["mary","home",8],
+["mary","about",9], and ["mary","career",10].
 The pattern ("home", "about", "career") has score 2 (joe and mary).
 The pattern ("home", "cart", "maps") has score 1 (james).
 The pattern ("home", "cart", "home") has score 1 (james).
