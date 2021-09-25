@@ -35,7 +35,7 @@ n == nums4.length
 
 
 class Solution:
-    def fourSumCount(self, A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
+    def fourSumCount(self, A, B, C, D):
         cnt = 0
         m = {}
         for a in A:
