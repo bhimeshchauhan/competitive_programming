@@ -51,10 +51,14 @@ Space complexity : O(n). The depth of recursion tree can go up to nn.
 """
 
 
+
+
+from collections import deque
+from collections import lru_cache
 class Solution:
-    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+    def wordBreak(self, s, wordDict):
         @lru_cache
-        def wordBreakMemo(s: str, word_dict: FrozenSet[str], start: int):
+        def wordBreakMemo(s, word_dict, start):
             if start == len(s):
                 return True
             for end in range(start + 1, len(s) + 1):
@@ -79,9 +83,9 @@ Space complexity : O(n). Queue of at most nn size is needed.
 
 """
 
-from collections import deque
+
 class Solution:
-    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+    def wordBreak(self, s, wordDict):
         word_set = set(wordDict)
         q = deque()
         visited = set()
@@ -98,4 +102,3 @@ class Solution:
                         return True
                 visited.add(start)
         return False
-
