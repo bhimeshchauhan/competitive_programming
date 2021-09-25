@@ -24,6 +24,49 @@ Constraints:
 
 """
 
+# Brute force solution
+
+"""
+
+Iterate through each number from nums and keep 
+counting untill you dont have the number in nums
+
+Time Complexity: O(n^3)
+Space Complexity: O(1)
+
+"""
+
+
+class Solution:
+    def longestConsecutive(self, nums):
+        longest_streak = 0
+
+        for num in nums:
+            current_num = num
+            current_streak = 1
+
+            while current_num + 1 in nums:
+                current_num += 1
+                current_streak += 1
+
+            longest_streak = max(longest_streak, current_streak)
+
+        return longest_streak
+
+# Sorting
+
+
+"""
+
+sort the nums and check for increasing 
+pattern and keep incrementing the count.
+
+Time Complexity: O(nlogn)
+Space Complexity: O(1) or O(n).
+
+"""
+
+
 class Solution:
     def longestConsecutive(self, nums):
         if not nums:
