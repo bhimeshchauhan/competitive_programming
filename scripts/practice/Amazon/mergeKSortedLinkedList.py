@@ -68,10 +68,7 @@ Creating a new linked list costs O(N) space.
 
 """
 
-
-
-
-from Queue import PriorityQueue
+from queue import PriorityQueue
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -117,7 +114,6 @@ which cost O(1) space. And the priority queue
 space (it's far less than N in most situations).
 
 """
-
 
 class Solution(object):
     def mergeKLists(self, lists):
