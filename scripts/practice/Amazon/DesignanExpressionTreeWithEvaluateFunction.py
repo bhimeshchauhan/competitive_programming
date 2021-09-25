@@ -63,6 +63,13 @@ The absolute value of the result and intermediate values will not exceed 109.
 It is guaranteed that no expression will include division by zero.
 
 """
+import abc
+from abc import ABC, abstractmethod
+"""
+This is the interface for the expression tree Node.
+You should not remove it, and you can define some classes to implement it.
+"""
+
 
 class Node(ABC):
     @abstractmethod
@@ -70,44 +77,48 @@ class Node(ABC):
     def evaluate(self) -> int:
         pass
 
+
 class TreeNode(Node):
-    def __init__(self, value, op=None):
+    def evaluate(self):
+        if self.val.isdigit():
+            return int(self.val)
+        elif self.val == '*':
+            return self.left.evaluate() * self.right.evaluate()
+        elif self.val == '+':
+            return self.left.evaluate() + self.right.evaluate()
+        elif self.val == '-':
+            return self.left.evaluate() - self.right.evaluate()
+        else:
+            return self.left.evaluate() // self.right.evaluate()
+
+    def __init__(self, val):
+        self.val = val
         self.left = None
         self.right = None
-        self.op = op
-        self.value = value
-        
-    def evaluate(self):
-        if self.op == None:
-            return int(self.value)
-        
-        if self.op == "+":
-            return self.left.evaluate() + self.right.evaluate()
-        if self.op == "-":
-            return self.left.evaluate() - self.right.evaluate()
-        if self.op == "*":
-            return self.left.evaluate() * self.right.evaluate()
-        if self.op == "/":
-            return self.left.evaluate() // self.right.evaluate()
+
+
 """    
 This is the TreeBuilder class.
 You can treat it as the driver code that takes the postinfix input
 and returns the expression tree represnting it as a Node.
 """
 
+
 class TreeBuilder(object):
     def buildTree(self, postfix: List[str]) -> 'Node':
-        stack = []
-        
-        ops = set(['+', '-', '*', '/'])
-        
-        for value in postfix:
-            if value not in ops:
-                node = TreeNode(value)
-                stack.append(node)
-            else:
-                node = TreeNode(0, value)
-                node.right = stack.pop()
-                node.left = stack.pop()
-                stack.append(node)
-        return stack[-1]
+        cur, stack = None, []
+        for c in postfix:
+            cur = TreeNode(c)
+            if not c.isdigit():
+                cur.right = stack.pop()
+                cur.left = stack.pop()
+            stack.append(cur)
+        return cur
+
+
+"""
+Your TreeBuilder object will be instantiated and called as such:
+obj = TreeBuilder();
+expTree = obj.buildTree(postfix);
+ans = expTree.evaluate();
+"""
