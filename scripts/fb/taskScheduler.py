@@ -3,7 +3,8 @@ class Solution:
         ## RC ##
         ## APPROACH : HASHMAP ##
         ## LOGIC : TAKE THE MAXIMUM FREQUENCY ELEMENT AND MAKE THOSE MANY NUMBER OF SLOTS ##
-        ##  Slot size = (n+1) if n= 2 => slotsize = 3 Example: {A:5, B:1} => ABxAxxAxxAxxAxx => indices of A = 0,2 and middle there should be n elements, so slot size should be n+1
+        ##  Slot size = (n+1) if n= 2 => slotsize = 3 Example: {A:5, B:1} => ABxAxxAxxAxxAxx => 
+        ## indices of A = 0,2 and middle there should be n elements, so slot size should be n+1
         
         ## Ex: {A:6,B:4,C:2} n = 2
         ## final o/p will be
