@@ -53,6 +53,13 @@ Node.random is null or is pointing to some node in the linked list.
 """
 
 
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+
+
 class Solution(object):
     def copyRandomList(self, head):
         """
