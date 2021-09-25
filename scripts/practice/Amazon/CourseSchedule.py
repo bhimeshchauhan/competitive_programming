@@ -53,6 +53,12 @@ else
 
 """
 
+"""
+
+Time Complexity: O(|V|+|E|)
+Space Complexity: O(|V|+|E|)
+
+"""
 
 class GNode(object):
     """  data structure represent a vertex in the graph."""
