@@ -34,50 +34,60 @@ All the given points are unique.
 Time complexity O(N*H), H means the number of nodes on the fence
 Space complexity O(N), the worst case is all nodes are on the fence
 """
-class Solution(object):
-    def outerTrees(self, points):
-        #start with the leftmost point on the map
-        leftmost = [float('inf'), float('inf')]
-        for x,y in points:
-            if x < leftmost[0]:
-                leftmost = [x,y]
-        #set this leftmost point as a starter
-        current = leftmost
-        
-        res = set()
-        res.add((leftmost[0],leftmost[1]))
-        while True:
-            target = points[0]
-            linenodes = []
-            for node in points:
-                if node != current:
-                    val = self.crossproduct(current,target,node)
-                    if val > 0: #node is on the left of target
-                        target = node 
-                        linenodes = []
-                    elif val == 0: #node is inline with the target
-                        if ((node[0]-current[0])**2+((node[1]-current[1])**2)) < ((target[0]-current[0])**2+((target[1]-current[1])**2)):
-                            linenodes.append(node) 
-                        else:
-                            linenodes.append(target)
-                            target = node
-                    else: #node is on the right of target, we don't care
-                        continue 
-            for linenode in linenodes:
-                res.add((linenode[0],linenode[1]))
-            if target == leftmost: #we encounter the start point, let's break 
-                break
-            res.add((target[0],target[1]))
 
-            current = target
-        return [[x,y] for x,y in res]
+
+class Solution:
+    @staticmethod
+    def check_cross_product(a, b, o):
+        ax = a[0] - o[0]
+        ay = a[1] - o[1]
+        bx = b[0] - o[0]
+        by = b[1] - o[1]
+        return ax*by - ay*bx
     
-    def crossproduct(self,origin, target, node):
-        x1 = origin[0] - target[0]
-        y1 = origin[1] - target[1]
-        x2 = origin[0] - node[0]
-        y2 = origin[1] - node[1]
-        return y2*x1 - y1*x2
+    @staticmethod
+    def find_farthest_pt(pts, pt):
+        far = None
+        for val in pts:
+            if not far:
+                far = tuple(val)
+            else:
+                dist_new = (val[0] - pt[0]) ** 2 + (val[1] - pt[1]) ** 2
+                dist_old = (far[0] - pt[0]) ** 2 + (far[1] - pt[1]) ** 2
+                if dist_new > dist_old:
+                    far = tuple(val)
+        return far
     
-    
-    
+    def outerTrees(self, points: List[List[int]]) -> List[List[int]]:
+        
+        ltm_pt = None
+        for val in points:
+            if not ltm_pt:
+                ltm_pt = tuple(val)
+            elif val[0] < ltm_pt[0]:
+                ltm_pt = tuple(val)
+
+        tree_dict = set()
+        vis = {}
+        curr_pt = ltm_pt
+        while(curr_pt and curr_pt not in vis):
+            tree_dict.add(curr_pt)
+            found_pt = []
+            for val in points:
+                if tuple(val) != curr_pt:
+                    if not found_pt:
+                        found_pt.append(val)
+                    else:
+                        crp_prd = Solution.check_cross_product(found_pt[0], val, curr_pt)
+                        if crp_prd > 0:
+                            found_pt = []
+                            found_pt.append(val)
+                        elif not crp_prd:
+                            found_pt.append(val)
+            vis[curr_pt] = True
+            farthest_pt = Solution.find_farthest_pt(found_pt, curr_pt)
+            for val in found_pt:
+                tup = tuple(val)
+                tree_dict.add(tup)
+            curr_pt = farthest_pt
+        return tree_dict
