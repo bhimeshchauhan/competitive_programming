@@ -30,7 +30,7 @@ Constraints:
 
 """
 
-# Brute Force
+# Brute Force - TLE
 
 """
 
