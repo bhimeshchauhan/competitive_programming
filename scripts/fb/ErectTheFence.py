@@ -31,6 +31,14 @@ All the given points are unique.
 
 
 """
+So the crux of the problem is to somehow find the boundary of all these points.
+The main idea behind how to do that is to first identify a single point which 
+is obviously going to be in the result set and then start finding points from 
+that starting point. I have taken the approach to always find the most anticlockwise 
+list of points from a particular point. Therefore we use the cross product to identify 
+these set of points (because angle between those two vectors would be positive if the 
+new vector is more anticlockwise than the last one).
+
 Time complexity O(N*H), H means the number of nodes on the fence
 Space complexity O(N), the worst case is all nodes are on the fence
 """
