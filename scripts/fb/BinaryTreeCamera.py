@@ -83,6 +83,11 @@ Space Complexity: O(M) where M is the maximum depth of the binary tree,
 which can range up to N, for the recursion stack
 """
 
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
     ans = 0
     def minCameraCover(self, root: TreeNode) -> int:
