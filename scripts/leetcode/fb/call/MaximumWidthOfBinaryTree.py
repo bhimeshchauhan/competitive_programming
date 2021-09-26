@@ -59,7 +59,7 @@ class TreeNode:
         self.left = left
         self.right = right
 
-
+from collections import deque
 class Solution:
     def widthOfBinaryTree(self, root: TreeNode) -> int:
         if not root:
