@@ -134,3 +134,30 @@ class Solution:
                 boxes[idx][pos] = 1
 
         return True
+
+
+class Solution:
+    def isValidLine(self, line: List[str]):
+        return len(set(line))-1 == len(line)-line.count('.')
+
+    def isValidGrid(self, grid: List[List[str]]):
+        return self.isValidLine(grid[0]+grid[1]+grid[2])
+
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        # Validating rows
+        for i in range(9):
+            if not self.isValidLine(board[i]):
+                return False
+
+        # Validating columns
+        columns = list(zip(*board))
+        for col in columns:
+            if not self.isValidLine(col):
+                return False
+
+        # Validating grids
+        for i in range(3, 10, 3):
+            for j in range(3, 10, 3):
+                if not self.isValidGrid([el[j-3:j] for el in board[i-3:i]]):
+                    return False
+        return True
