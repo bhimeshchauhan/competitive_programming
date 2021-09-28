@@ -36,6 +36,7 @@ Follow up: Can you come up with an algorithm that runs in O(n log(n)) time compl
 # Space: O(N)
 class Solution:
     def lengthOfLIS(self, nums):
+        # Since every increasing sub sequence have atleast one length
         dp = [1] * len(nums)
         for i in range(1, len(nums)):
             for j in range(i):
