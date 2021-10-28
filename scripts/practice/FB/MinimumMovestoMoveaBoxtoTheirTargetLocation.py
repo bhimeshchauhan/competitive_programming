@@ -84,6 +84,9 @@ queue instead of normal queue, the worst case time might increase but average ca
 """
 
 
+
+
+from collections import deque
 class Solution:
     def minPushBox(self, grid):
 
