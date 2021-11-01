@@ -43,6 +43,9 @@ There will be at least one building in the grid.
 
 """
 
+import math
+from collections import deque
+
 
 class Solution(object):
     def shortestDistance(self, grid):
@@ -50,6 +53,36 @@ class Solution(object):
         :type grid: List[List[int]]
         :rtype: int
         """
+        rows = len(grid)
+        cols = len(grid[0])
+        directions = [(0, 1), (1, 0), (-1, 0), (0, -1)]
+        total_sum_mat = [[0] * cols for _ in range(rows)]
+
+        def bfs(row, col, current_count):
+            min_distance = math.inf
+            queue = deque()
+            queue.append([row, col, 0])
+            while queue:
+                current_row, current_col, current_step = queue.popleft()
+                for d in directions:
+                    next_row = current_row + d[0]
+                    next_col = current_col + d[1]
+                    if 0 <= next_row < rows and 0 <= next_col < cols and grid[next_row][next_col] == -current_count:
+                        total_sum_mat[next_row][next_col] += current_step + 1
+                        min_distance = min(
+                            min_distance, total_sum_mat[next_row][next_col])
+                        grid[next_row][next_col] -= 1
+                        queue.append([next_row, next_col, current_step + 1])
+            return min_distance
+        count = 0
+        for row in range(rows):
+            for col in range(cols):
+                if grid[row][col] == 1:
+                    min_distance = bfs(row, col, count)
+                    count += 1
+                    if min_distance == math.inf:
+                        return -1
+        return min_distance
 
 
 if __name__ == "__main__":
