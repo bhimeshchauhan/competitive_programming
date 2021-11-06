@@ -8,7 +8,6 @@ Now, we may change 0s to 1s so as to connect the two islands together to form 1 
 
 Return the smallest number of 0s that must be flipped.  (It is guaranteed that the answer is at least 1.)
 
-
 Example 1:
 
 Input: grid = [[0,1],[1,0]]
@@ -24,7 +23,6 @@ Example 3:
 Input: grid = [[1,1,1,1,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]
 Output: 1
 
-
 Constraints:
 
 2 <= grid.length == grid[0].length <= 100
@@ -32,3 +30,12 @@ grid[i][j] == 0 or grid[i][j] == 1
 
 """
 
+class Solution:
+    def shortestBridge(self, grid: List[List[int]]) -> int:
+        pass
+        
+        
+        
+if __name__ == "__main__":
+    grid = [[0,1],[1,0]]
+    print(Solution().shortestBridge(grid))
