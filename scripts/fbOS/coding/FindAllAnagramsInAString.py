@@ -65,6 +65,6 @@ class Solution:
 
 
 if __name__ == "__main__":
-    s = "cbaebabacd",
+    s = "cbaebabacd"
     p = "abc"
-    print(Solution().findAnagrams(s, p))
+    print(Solution().findAnagramsHashMap(s, p))
