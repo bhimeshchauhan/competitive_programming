@@ -1,9 +1,9 @@
 """
 
- Remove All Adjacent Duplicates In String
- 
- You are given a string s consisting of lowercase English letters. A duplicate removal 
- consists of choosing two adjacent and equal letters and removing them.
+Remove All Adjacent Duplicates In String
+
+You are given a string s consisting of lowercase English letters. A duplicate removal 
+consists of choosing two adjacent and equal letters and removing them.
 
 We repeatedly make duplicate removals on s until we no longer can.
 
@@ -20,7 +20,7 @@ Example 2:
 
 Input: s = "azxxzy"
 Output: "ay"
- 
+
 
 Constraints:
 
