@@ -6,9 +6,6 @@ Search a string in TRIE DS where search string can have "." and "". For example:
 
 """
 
-
-from typing import Dict, List, Any
-
 WILDCARD = '.'
 
 
@@ -16,6 +13,9 @@ class Trie:
     def __init__(self):
         self.children = {}
         self.isLeaf = False
+
+    def write(self):
+        print(self.children)
 
     def insert(self, key):
         node = self
@@ -26,6 +26,7 @@ class Trie:
         node.isLeaf = True
 
     def find(self, key):
+        # stack of node, count of char, current word
         stack = [(self, 0, '')]
         result = []
 
@@ -56,12 +57,12 @@ def main():
     trie.insert('ward')
     trie.insert('oi')
     trie.insert('boi')
-
-    assert(trie.find('??') == ['oi'])
+    
+    assert(trie.find('..') == ['oi'])
     assert(trie.find('') == [])
-    assert(trie.find('w?rd') == ['ward', 'word'])
-    assert(trie.find('???') == ['boi'])
-    assert(trie.find('?oi') == ['boi'])
+    assert(trie.find('w.rd') == ['word', 'ward'])
+    assert(trie.find('...') == ['boi'])
+    assert(trie.find('.oi') == ['boi'])
 
 
 if __name__ == '__main__':
