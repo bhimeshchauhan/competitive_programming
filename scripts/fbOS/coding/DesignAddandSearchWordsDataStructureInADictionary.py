@@ -112,3 +112,4 @@ if __name__ == "__main__":
     Solution.addWord("bake")
     print(Solution.trie)
     print(Solution.search("bake"))
+    print(Solution.search("bane"))
