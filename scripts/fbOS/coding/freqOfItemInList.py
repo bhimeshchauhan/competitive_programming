@@ -13,7 +13,7 @@ Output:[1]
 
 """
 
-from collections import defaultdict, Counter
+from collections import defaultdict
 
 
 def high_freq(arr, m):
