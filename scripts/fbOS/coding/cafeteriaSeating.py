@@ -13,25 +13,28 @@ Please take care to write a solution which runs within the time limit.
 import math
 
 
-def getMaxAdditionalDinersCount(N, K, M, S):
-    # Write your code here
-    S.sort()
+def getMaxAdditionalDinersCount(num_seats, num_seats_gap, currently_seated, occupied_seats):
+    # sort the seats
+    occupied_seats.sort()
     extra_diner = 0
+
     # Handle cases to accommodate extra diner between 2 person
     i = 0
-    while i < M-1:
-        start = S[i] + (K+1)
-        end = S[i+1] - (K + 1)
-        extra_diner = extra_diner + get_extra_diner(start, end, K)
+    while i < currently_seated-1:
+        start = occupied_seats[i] + (num_seats_gap+1)
+        end = occupied_seats[i+1] - (num_seats_gap + 1)
+        extra_diner = extra_diner + get_extra_diner(start, end, num_seats_gap)
         i += 1
 
-    extra_diner_start_case = get_extra_diner(1, S[0]-(K+1), K)
-    extra_diner_end_case = get_extra_diner(S[-1] + K+1, N, K)
+    extra_diner_start_case = get_extra_diner(
+        1, occupied_seats[0]-(num_seats_gap+1), num_seats_gap)
+    extra_diner_end_case = get_extra_diner(
+        occupied_seats[-1] + num_seats_gap+1, num_seats, num_seats_gap)
 
     return extra_diner_start_case + extra_diner + extra_diner_end_case
 
 
-def get_extra_diner(start, end, K):
+def get_extra_diner(start, end, num_seats_gap):
     '''
     Diner can occupy start and end
     '''
@@ -39,20 +42,21 @@ def get_extra_diner(start, end, K):
         return 0
     seats = end - start + 1
 
-    out = int(seats / (K + 1))
-    if seats % (K + 1) != 0:
+    out = int(seats / (num_seats_gap + 1))
+    if seats % (num_seats_gap + 1) != 0:
         out = out + 1
     return out
 
 
 if __name__ == "__main__":
-    # N = 15
-    # K = 2
-    # M = 3
-    # S = [11, 6, 14]
+    # num_seats = 15
+    # num_seats_gap = 2
+    # currently_seated = 3
+    # occupied_seats = [11, 6, 14]
 
-    N = 10
-    K = 1
-    M = 2
-    S = [2, 6]
-    print(getMaxAdditionalDinersCount(N, K, M, S))
+    num_seats = 10
+    num_seats_gap = 1
+    currently_seated = 2
+    occupied_seats = [2, 6]
+    print(getMaxAdditionalDinersCount(
+        num_seats, num_seats_gap, currently_seated, occupied_seats))
