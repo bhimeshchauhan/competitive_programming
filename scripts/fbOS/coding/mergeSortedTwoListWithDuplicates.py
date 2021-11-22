@@ -1,5 +1,5 @@
 # Python program to merge
-# two sorted arrays
+# two sorted arrays / Lists and NOT LINKED LISTS
 
 # Merge arr1[0..n1-1] and
 # arr2[0..n2-1] into
