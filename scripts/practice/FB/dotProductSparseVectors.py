@@ -41,6 +41,7 @@ n == nums1.length == nums2.length
 
 """
 
+# With class definition
 class SparseVector:
     def __init__(self, nums: List[int]):
         self.sv = []
@@ -58,7 +59,39 @@ class SparseVector:
                     ans += val1 * val2
         return ans
                     
-                
+
+# With List
+def sparseVDotProduct(a,b):
+    listA=[]
+    listB=[]
+
+    for i in range(len(a)):
+        if a[i]!=0:
+            listA.append((i,a[i]))
+
+    for i in range(len(b)):
+        if b[i]!=0:
+            listB.append((i,b[i]))
+
+    p1=0
+    p2=0
+    result=0
+
+    while (p1<len(listA) and p2<len(listB)):
+        if listA[p1][0]==listB[p2][0]:
+            result+= listA[p1][1]*listB[p2][1]
+            p1+=1
+            p2+=1
+        elif listA[p1][0] < listB[p2][0]:
+            p1+=1
+        else:
+            p2+=1
+
+    return result
+
+a=[0,2,3,4,0,0,0,0,0,0,5]
+b=[5,1,0,0,0,0,0,0,0,0,9,3]
+print(sparseVDotProduct(a, b))
         
 
 # Your SparseVector object will be instantiated and called as such:
