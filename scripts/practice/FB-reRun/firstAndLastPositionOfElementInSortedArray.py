@@ -34,27 +34,40 @@ nums is a non-decreasing array.
 
 """
 
+# Calculation based approach
+
+
 class Solution:
-    def searchRange(self, nums: List[int], target: int) -> List[int]:
+    def searchRange(self, nums, target):
         res = [-1, -1]
-        
+
         for idx, item in enumerate(nums):
             if item == target:
                 res[0] = idx
                 break
-        
+
         for idx, item in enumerate(reversed(nums)):
             if item == target:
                 res[-1] = len(nums)-idx-1
                 break
-            
+
         return res
 
 
+if __name__ == "__main__":
+    sol = Solution()
+    nums = [5, 7, 7, 8, 8, 10]
+    target = 8
+    print(sol.searchRange(nums, target))
+
+# Binary Search
+
+
 class Solution:
-    def searchRange(self, nums: List[int], target: int) -> List[int]:
-        if len(nums) == 0: return [-1, -1]
-        
+    def searchRange(self, nums, target):
+        if len(nums) == 0:
+            return [-1, -1]
+
         def searchLow(nums, target):
             head, tail = 0, len(nums) - 1
             while head <= tail:
@@ -64,7 +77,7 @@ class Solution:
                 else:
                     head = mid + 1
             return head
-                
+
         def searchHigh(nums, target):
             head, tail = 0, len(nums) - 1
             while head <= tail:
@@ -74,10 +87,17 @@ class Solution:
                 else:
                     head = mid + 1
             return tail
-        
+
         start = searchLow(nums, target)
         end = searchHigh(nums, target)
         if 0 <= start < len(nums) and start <= end and nums[start] == target:
             return [start, end]
         else:
             return [-1, -1]
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    nums = [5, 7, 7, 8, 8, 10]
+    target = 8
+    print(sol.searchRange(nums, target))
