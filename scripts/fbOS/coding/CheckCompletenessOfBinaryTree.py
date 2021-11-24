@@ -55,7 +55,8 @@ class Solution:
 
 # BFS
 
-
+# O(n)
+# Space: O(n)
 def isCompleteTree(self, root):
     """
     :type root: TreeNode
