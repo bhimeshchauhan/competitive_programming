@@ -42,9 +42,12 @@ folder[i] always starts with the character '/'.
 Each folder name is unique.
 
 """
+
+
 class Solution:
-    def removeSubfolders(self, folder: List[str]) -> List[str]:
-        if not folder: return []
+    def removeSubfolders(self, folder):
+        if not folder:
+            return []
         folder.sort()
         ans, prev = [folder[0]], folder[0]+'/'
         for f in folder[1:]:
@@ -52,3 +55,8 @@ class Solution:
                 ans.append(f)
                 prev = f+'/'
         return ans
+
+
+if __name__ == "__main__":
+    folder = ["/a/b", "/a", "/c/d", "/c/d/e", "/c/f"]
+    print(Solution().removeSubfolders(folder))
