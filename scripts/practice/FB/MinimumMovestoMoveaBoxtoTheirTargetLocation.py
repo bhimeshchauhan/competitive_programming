@@ -18,7 +18,6 @@ Return the minimum number of pushes to move the box to the target. If there is n
 
 Example 1:
 
-
 Input: grid = [["#","#","#","#","#","#"],
                ["#","T","#","#","#","#"],
                ["#",".",".","B",".","#"],
@@ -27,6 +26,7 @@ Input: grid = [["#","#","#","#","#","#"],
                ["#","#","#","#","#","#"]]
 Output: 3
 Explanation: We return only the number of times the box is pushed.
+
 Example 2:
 
 Input: grid = [["#","#","#","#","#","#"],
@@ -36,6 +36,7 @@ Input: grid = [["#","#","#","#","#","#"],
                ["#",".",".",".","S","#"],
                ["#","#","#","#","#","#"]]
 Output: -1
+
 Example 3:
 
 Input: grid = [["#","#","#","#","#","#"],
@@ -46,13 +47,13 @@ Input: grid = [["#","#","#","#","#","#"],
                ["#","#","#","#","#","#"]]
 Output: 5
 Explanation:  push the box down, left, left, up and up.
+
 Example 4:
 
 Input: grid = [["#","#","#","#","#","#","#"],
                ["#","S","#",".","B","T","#"],
                ["#","#","#","#","#","#","#"]]
 Output: -1
- 
 
 Constraints:
 
@@ -145,3 +146,13 @@ class Solution:
                         q.append((dist+1, new_box, box))
 
         return -1
+
+
+if __name__ == "__main__":
+    grid = [["#", "#", "#", "#", "#", "#"],
+            ["#", "T", "#", "#", "#", "#"],
+            ["#", ".", ".", "B", ".", "#"],
+            ["#", ".", "#", "#", ".", "#"],
+            ["#", ".", ".", ".", "S", "#"],
+            ["#", "#", "#", "#", "#", "#"]]
+    print(Solution().minPushBox(grid))
