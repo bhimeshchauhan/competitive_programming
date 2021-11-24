@@ -27,8 +27,6 @@ words[i] consists of lowercase English letters.
 k is in the range [1, The number of unique words[i]]
 
 """
-
-from collections import Counter
 import heapq
 
 
