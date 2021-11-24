@@ -1,6 +1,6 @@
 """
 
-Add Two Numbers
+Add Two Numbers - Linked List
 
 You are given two non-empty linked lists representing two non-negative integers. 
 The digits are stored in reverse order, and each of their nodes contains a single digit. 
@@ -33,20 +33,23 @@ It is guaranteed that the list represents a number that does not have leading ze
 """
 
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 
 class Solution:
     def addTwoNumbers(self, l1, l2):
-        
+
         carry = 0
         head = ans = ListNode(None)
         while l1 or l2 or carry:
             firstNum = l1.val if l1 else 0
             secondNum = l2.val if l2 else 0
-            
+
             carry, add = divmod(firstNum + secondNum + carry, 10)
             ans.next = ListNode(add)
             l1 = l1.next if l1 else None
@@ -54,4 +57,3 @@ class Solution:
             ans = ans.next
 
         return head.next
-        
