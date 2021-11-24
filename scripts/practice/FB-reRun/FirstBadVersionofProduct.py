@@ -36,7 +36,11 @@ Constraints:
 # The isBadVersion API is already defined for you.
 # @param version, an integer
 # @return an integer
-# def isBadVersion(version):
+
+
+def isBadVersion(version):
+    pass
+
 
 class Solution:
     def firstBadVersion(self, n):
@@ -45,7 +49,7 @@ class Solution:
         :rtype: int
         """
         lo, hi = 0, n
-        
+
         while lo < hi:
             """
             If you are setting mid = (left+right)//2,you have to be very careful. 
@@ -58,5 +62,5 @@ class Solution:
                 hi = mid
             else:
                 lo = mid + 1
-        
+
         return lo
