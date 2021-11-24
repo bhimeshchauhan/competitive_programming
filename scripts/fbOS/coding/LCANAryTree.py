@@ -4,8 +4,6 @@ LCA for N-Ary Tree
 
 """
 
-
-# Python3 implementation to
 # find LCA in a tree
 MAXN = 1001
 
@@ -90,5 +88,3 @@ if __name__ == "__main__":
           str(LCANaive(11, 8)))
     print('LCA(3,13) : ' +
           str(LCANaive(3, 13)))
-
-# This code is contributed by RUtvik_56
