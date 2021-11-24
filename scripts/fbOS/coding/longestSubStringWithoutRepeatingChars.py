@@ -22,7 +22,6 @@ Example 4:
 
 Input: s = ""
 Output: 0
- 
 
 Constraints:
 
