@@ -34,8 +34,10 @@ Follow-up: Could you solve it in O(n log(k)) time and O(n) extra space?
 
 import heapq
 from collections import Counter
+
+
 class Solution:
-    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+    def topKFrequent(self, words, k):
         # set up a max heap
         table = Counter(words)
         heap = []
