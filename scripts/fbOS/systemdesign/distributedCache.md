@@ -48,7 +48,6 @@ We need to cache data on a distributed system. The data should be stored in a ca
           - add item to front of DLL
           - add item to Hash Table
 
-
 ## LRU Cache Implementation
 
 ```python
@@ -99,3 +98,34 @@ class LRUCache:
         node.prev = self.head
         self.head.next.prev = node
         self.head.next = node
+```
+
+## Distributed Cache Implementation
+
+- Dedicated Cache Clusters
+  - In separate machine
+  - Isolation of resources between service and cache
+  - can be used by multiple services
+  - Flexibility in choosing hardware
+- Co-located Cache Clusters
+  - In same machine
+  - No extra hardware and operational cost
+  - Scales together with the service
+
+### Choosing a cache host (Sharding)
+
+- Naive Approach
+  - CacheHostNumber = Hash(key) % NumberOfCacheHosts
+- Consistent Hashing
+  - Pick a point in circle
+  - Pick a cache host
+  - Hash(IP)
+- Who is responsible for selection?
+  - cache client in the service.
+  - cache client knows about all cache servers
+  - All cache clients should be aware of all cache servers
+  - Client stores list of servers in sorted order
+  - Binary search is used to identify the cache server O(log n)
+  - Cache client uses TCP or UDP protocol to talk to servers
+  - If server is unavailable, client proceeds as though it was a cache miss
+  
