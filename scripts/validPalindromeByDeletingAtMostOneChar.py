@@ -1,8 +1,6 @@
 """
 Given a string s, return true if the s can be palindrome after deleting at most one character from it.
 
- 
-
 Example 1:
 
 Input: s = "aba"
@@ -18,7 +16,6 @@ Example 3:
 
 Input: s = "abc"
 Output: false
- 
 
 Constraints:
 1 <= s.length <= 105
@@ -26,8 +23,9 @@ s consists of lowercase English letters.
 
 """
 
+
 class Solution:
-    def validPalindrome(self, s: str) -> bool:
+    def validPalindrome(self, s):
         def verify(s, left, right, deleted):
             while left < right:
                 if s[left] != s[right]:
@@ -41,8 +39,7 @@ class Solution:
                     right -= 1
             return True
         return verify(s, 0, len(s)-1, False)
-        
-        
+
 
 if __name__ == "__main__":
     s = "abcdba"
