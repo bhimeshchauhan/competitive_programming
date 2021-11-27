@@ -26,6 +26,7 @@ Constraints:
 
 """
 
+
 class Solution:
     def myPow(self, x, n):
         """
@@ -44,4 +45,19 @@ class Solution:
                 res *= x
             x *= x
             n >>= 1
-        return res        
+        return res
+
+
+if __name__ == '__main__':
+    sol = Solution()
+    x = 2.00000
+    n = 10
+    print(sol.myPow(x, n))
+
+    x = 2.10000
+    n = 3
+    print(sol.myPow(x, n))
+
+    x = 2.00000
+    n = -2
+    print(sol.myPow(x, n))
