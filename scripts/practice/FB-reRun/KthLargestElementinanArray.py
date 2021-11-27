@@ -22,7 +22,16 @@ Constraints:
 -104 <= nums[i] <= 104
 
 """
+
+import heapq
+
+
 class Solution:
-    def findKthLargest(self, nums: List[int], k: int) -> int:
+    def findKthLargest(self, nums, k):
         return heapq.nlargest(k, nums)[-1]
-        
+
+
+if __name__ == '__main__':
+    nums = [3, 2, 3, 1, 2, 4, 5, 5, 6]
+    k = 4
+    print(Solution().findKthLargest(nums, k))
