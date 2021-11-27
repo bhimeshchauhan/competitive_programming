@@ -33,6 +33,16 @@ from collections import defaultdict
 
 class Solution:
     def groupStrings(self, strings):
+        ## RC ##
+        ## APPROACH : GREEDY ##
+        ## LOGIC ##
+        # 1. Intuition is: there will be some relative thing in common for all those strings. Ahhh yes, difference in ascii values
+        # 2. Store ascii value pairs in hashmap and group together.
+        # 3. If the diff in ascii become -ve then add 26
+        # Watchout : case : acz (2, 23), dfc (2, -3) ==> (2, -3+26 = 23) => can be clubbed together.
+
+        ## TIME COMPLEXITY : O(N) ##
+        ## SPACE COMPLEXITY : O(N) ##
         hashmap = defaultdict(list)
         for s in strings:
             key = []
@@ -45,7 +55,8 @@ class Solution:
             hashmap[','.join(key)].append(s)
         return list(hashmap.values())
 
+
 if __name__ == '__main__':
     s = Solution()
-    print(s.groupStrings(["abc","bcd","acef","xyz","az","ba","a","z"]))
+    print(s.groupStrings(["abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"]))
     print(s.groupStrings(["a"]))
