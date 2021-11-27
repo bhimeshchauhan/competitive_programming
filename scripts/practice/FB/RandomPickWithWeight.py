@@ -8,8 +8,6 @@ We need to call the function pickIndex() which randomly returns an integer in th
 
 More formally, the probability of picking index i is w[i] / sum(w).
 
- 
-
 Example 1:
 
 Input
@@ -21,6 +19,7 @@ Output
 Explanation
 Solution solution = new Solution([1]);
 solution.pickIndex(); // return 0. Since there is only one single element on the array the only option is to return the first element.
+
 Example 2:
 
 Input
@@ -45,7 +44,6 @@ Since this is a randomization problem, multiple answers are allowed so the follo
 [null,1,0,1,0,0]
 ......
 and so on.
- 
 
 Constraints:
 
