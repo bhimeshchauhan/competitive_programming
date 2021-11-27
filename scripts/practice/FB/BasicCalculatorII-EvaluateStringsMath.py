@@ -1,6 +1,6 @@
 """
 
-Basic Calculator II
+Basic Calculator II - Evaluate strings as math expressions
 
 Given a string s which represents an expression, evaluate this expression and return its value. 
 
@@ -9,8 +9,6 @@ The integer division should truncate toward zero.
 You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
 
 Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
-
- 
 
 Example 1:
 
@@ -24,7 +22,6 @@ Example 3:
 
 Input: s = " 3+5 / 2 "
 Output: 5
- 
 
 Constraints:
 
@@ -36,12 +33,11 @@ The answer is guaranteed to fit in a 32-bit integer.
 
 """
 
+
 class Solution:
-    def calculate(self, s: str) -> int:
-        
+    def calculate(self, s):
         # Evaluate
-        def evaluate(stack: List, curr: str, operator: str):
-            print(stack, curr, operator)
+        def evaluate(stack, curr, operator):
             if operator == "-":
                 stack.append(-1 * int(curr))
             elif operator == "*":
@@ -55,25 +51,28 @@ class Solution:
             else:
                 stack.append(int(curr))
             return
-        
+
         stack = []
         operator = ""
         curr = ""
-        
+
         # Make stack
         for char in s:
             if char != ' ':
                 if char.isdigit():
                     curr = curr + char
                 else:
-                    evaluate(stack, curr, operator)    
+                    evaluate(stack, curr, operator)
                     operator = char
                     curr = ""
-                    
+
         # Evaluate last operation
         evaluate(stack, curr, operator)
-        
+
         return sum(stack)
-            
-                      
-        
+
+
+if __name__ == '__main__':
+    s = Solution()
+    exp = " 3+5 / 2 "
+    print(s.calculate(exp))
