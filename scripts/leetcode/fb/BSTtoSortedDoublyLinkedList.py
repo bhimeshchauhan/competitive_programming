@@ -84,7 +84,7 @@ class Solution:
 
 # Iteration
 
-def treeToDoublyList(self, root: 'Node') -> 'Node':
+def treeToDoublyList(self, root):
     
     if not root:
         return None
