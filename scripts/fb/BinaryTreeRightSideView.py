@@ -28,11 +28,11 @@ The number of nodes in the tree is in the range [0, 100].
 """
 
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
     def rightSideView(self, root):
         depthTally = {}
@@ -46,5 +46,4 @@ class Solution:
             
         dfs(root, 0)
         print(depthTally)
-        return list(depthTally.values())
-            
+        return list(depthTally.values())            
