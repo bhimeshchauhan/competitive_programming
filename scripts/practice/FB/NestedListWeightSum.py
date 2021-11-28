@@ -37,8 +37,11 @@ The maximum depth of any integer is less than or equal to 50.
 
 #  DFS
 
+from collections import deque
+
+
 class Solution:
-    def depthSum(self, nestedList: List[NestedInteger]) -> int:
+    def depthSum(self, nestedList):
 
         def dfs(nested_list, depth):
             total = 0
@@ -53,8 +56,10 @@ class Solution:
 
 
 # BFS
+
+
 class Solution:
-    def depthSum(self, nestedList: List[NestedInteger]) -> int:
+    def depthSum(self, nestedList):
         queue = deque(nestedList)
 
         depth = 1
