@@ -68,7 +68,6 @@ Example 2:
 
 Input: accounts = [["Gabe","Gabe0@m.co","Gabe3@m.co","Gabe1@m.co"],["Kevin","Kevin3@m.co","Kevin5@m.co","Kevin0@m.co"],["Ethan","Ethan5@m.co","Ethan4@m.co","Ethan0@m.co"],["Hanzo","Hanzo3@m.co","Hanzo1@m.co","Hanzo0@m.co"],["Fern","Fern5@m.co","Fern1@m.co","Fern0@m.co"]]
 Output: [["Ethan","Ethan0@m.co","Ethan4@m.co","Ethan5@m.co"],["Gabe","Gabe0@m.co","Gabe1@m.co","Gabe3@m.co"],["Hanzo","Hanzo0@m.co","Hanzo1@m.co","Hanzo3@m.co"],["Kevin","Kevin0@m.co","Kevin3@m.co","Kevin5@m.co"],["Fern","Fern0@m.co","Fern1@m.co","Fern5@m.co"]]
- 
 
 Constraints:
 
@@ -81,11 +80,14 @@ accounts[i][j] (for j > 0) is a valid email.
 
 """
 
+from collections import defaultdict
+
+
 class Solution:
-    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
+    def accountsMerge(self, accounts):
         graph = defaultdict(set)
         email2name = {}
-        
+
         # create a graph
         for acc in accounts:
             name = acc[0]
@@ -94,25 +96,33 @@ class Solution:
             for email2 in acc[2:]:
                 graph[email1].add(email2)
                 graph[email2].add(email1)
-        
+
         def dfs(node):
             visited.add(node)
             res.append(node)
             for child in graph[node]:
                 if child not in visited:
                     dfs(child)
-        
-        
+
         output = []
         visited = set()
-        print('email2name ', email2name)
-        print('graph ', graph)
         for email in email2name.keys():
-            print('email', email)
             # apply dfs
             if email not in visited:
                 res = []
                 dfs(email)
                 output.append([email2name[email]] + sorted(res))
-        
+
         return output
+
+
+if __name__ == '__main__':
+    sol = Solution()
+    accounts = [
+        ["Gabe", "Gabe0@m.co", "Gabe3@m.co", "Gabe1@m.co"],
+        ["Kevin", "Kevin3@m.co", "Kevin5@m.co", "Kevin0@m.co"],
+        ["Ethan", "Ethan5@m.co", "Ethan4@m.co", "Ethan0@m.co"],
+        ["Hanzo", "Hanzo3@m.co", "Hanzo1@m.co", "Hanzo0@m.co"],
+        ["Fern", "Fern5@m.co", "Fern1@m.co", "Fern0@m.co"]
+    ]
+    print(sol.accountsMerge(accounts))
