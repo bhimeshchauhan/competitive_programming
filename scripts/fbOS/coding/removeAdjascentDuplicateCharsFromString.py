@@ -37,32 +37,57 @@ s only contains lower case English letters.
 
 """
 
+
+class Solution:
+    def removeDuplicatesShort(self, s, k):
+        a = []
+        for i in s:
+            if not a:
+                a.append(i)
+            elif a[-1] != i:
+                a.append(i)
+            else:
+                a.pop()
+        return "".join(i for i in a)
+
+
+if __name__ == "__main__":
+    s = "abcd"
+    k = 2
+    print(Solution().removeDuplicatesShort(s, k))
+
+    s = "deeedbbcccbdaa"
+    k = 3
+    print(Solution().removeDuplicatesShort(s, k))
+
+    s = "pbbcggttciiippooaais"
+    k = 2
+    print(Solution().removeDuplicatesShort(s, k))
+
+
 class Solution:
     def removeDuplicates(self, s, k):
-        
-        char_stack = [ ('bottom', 0) ]
+
+        char_stack = [('bottom', 0)]
 
         for char in s:
 
             if char == char_stack[-1][0]:
                 # update last character's length of adjacency
                 last_char, last_adj_len = char_stack.pop()
-                char_stack.append( (last_char, last_adj_len+1) )
-
+                char_stack.append((last_char, last_adj_len+1))
 
             else:
                 # push character with length of adjacency = 1
-                char_stack.append( ( char, 1) )
-
+                char_stack.append((char, 1))
 
             if char_stack[-1][1] == k:
                 # pop last character if it has repeated k times
 
                 char_stack.pop()
 
-
         # generate output string
-        output_str = ''.join( char*occ for char, occ in char_stack)
+        output_str = ''.join(char*occ for char, occ in char_stack)
 
         return output_str
 
@@ -70,12 +95,12 @@ class Solution:
 if __name__ == "__main__":
     s = "abcd"
     k = 2
-    print( Solution().removeDuplicates(s, k) )
+    print(Solution().removeDuplicates(s, k))
 
     s = "deeedbbcccbdaa"
     k = 3
-    print( Solution().removeDuplicates(s, k) )
+    print(Solution().removeDuplicates(s, k))
 
     s = "pbbcggttciiippooaais"
     k = 2
-    print( Solution().removeDuplicates(s, k) )
+    print(Solution().removeDuplicates(s, k))
