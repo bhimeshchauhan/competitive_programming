@@ -58,3 +58,9 @@ class Solution(object):
             else:
                 [ans.append(x) for x in entry[1]]
         return ans
+
+
+if __name__ == '__main__':
+    s = Solution()
+    mat = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    print(s.findDiagonalOrder(mat))
