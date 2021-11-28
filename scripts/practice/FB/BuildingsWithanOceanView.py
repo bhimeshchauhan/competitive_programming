@@ -43,17 +43,23 @@ Constraints:
 
 from collections import deque
 
+
 class Solution:
-    def findBuildings(self, heights: List[int]) -> List[int]:
-        
-		# Keep track of maximum height
+    def findBuildings(self, heights):
+
+        # Keep track of maximum height
         curr_max_height = 0
         buildings_with_view = deque()
-        
-		# Iterate through building heights from the last index
+
+        # Iterate through building heights from the last index
         for idx in range(len(heights) - 1, -1, -1):
-          if heights[idx] > curr_max_height:
-            curr_max_height = heights[idx]
-            buildings_with_view.appendleft(idx)
-            
+            if heights[idx] > curr_max_height:
+                curr_max_height = heights[idx]
+                buildings_with_view.appendleft(idx)
+
         return buildings_with_view
+
+
+if __name__ == '__main__':
+    heights = [4, 2, 3, 1]
+    print(Solution().findBuildings(heights))
