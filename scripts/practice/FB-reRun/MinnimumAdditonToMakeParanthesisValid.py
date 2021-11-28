@@ -49,3 +49,6 @@ class Solution(object):
                 ans += 1
                 bal += 1
         return ans + bal
+
+if __name__ == '__main__':
+    print(Solution().minAddToMakeValid("()))"))
