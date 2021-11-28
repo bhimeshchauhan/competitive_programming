@@ -42,6 +42,47 @@ p and q exist in the tree.
 
 """
 
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+        self.parent = None
+"""
+
+
+class Solution:
+    def lowestCommonAncestor(self, p: 'Node', q: 'Node'):
+
+        if not p:
+            return q
+        if not q:
+            return p
+
+        root = None
+        root = q
+        while root.parent:
+            root = root.parent
+
+        def lca(root, p, q):
+            if not root:
+                return
+
+            if root is p or root is q:
+                return root
+
+            left = right = None
+            left = lca(root.left, p, q)
+            right = lca(root.right, p, q)
+
+            if left and right:
+                return root
+            return left or right
+
+        return lca(root, p, q)
+
 # Definition for a Node.
 
 
