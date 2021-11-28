@@ -55,31 +55,30 @@ Node.random is null or is pointing to some node in the linked list.
 
 """
 
-"""
-# Definition for a Node.
+
 class Node:
-    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+    def __init__(self, x, next=None, random=None):
         self.val = int(x)
         self.next = next
         self.random = random
-"""
+
 
 class Solution:
-    def copyRandomList(self, head: 'Node') -> 'Node':
+    def copyRandomList(self, head):
         if not head:
             return head
-        
+
         ogHead = cloneRandom = head
 
         while head:
             clone = Node(x=head.val, next=head.next)
             head.next = clone
             head = clone.next
-            
+
         while cloneRandom:
             cloneRandom.next.random = cloneRandom.random.next if cloneRandom.random else None
             cloneRandom = cloneRandom.next.next
-            
+
         cloneHead = ogHead.next
         cloneReturn = ogHead.next
         while ogHead:
@@ -88,5 +87,3 @@ class Solution:
             ogHead = ogHead.next
             cloneHead = cloneHead.next
         return cloneReturn
-            
-            
