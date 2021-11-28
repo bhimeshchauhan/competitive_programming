@@ -103,13 +103,17 @@ class Solution(object):
 
         area = {}
         index = 2
+        # Get the area of each island
         for r in range(N):
             for c in range(N):
                 if grid[r][c] == 1:
                     area[index] = dfs(r, c, index)
                     index += 1
-
+        
+        # max area right now
         ans = max(area.values() or [0])
+        # iterate over all islands and add 1 to the area to get the
+        # largest island
         for r in range(N):
             for c in range(N):
                 if grid[r][c] == 0:
