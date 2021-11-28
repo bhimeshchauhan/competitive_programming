@@ -30,7 +30,6 @@ Example 5:
 
 Input: num = "3456237490", target = 9191
 Output: []
- 
 
 Constraints:
 
@@ -40,11 +39,13 @@ num consists of only digits.
 
 """
 
+
 class Solution:
-    def addOperators(self, num: 'str', target: 'int') -> 'List[str]':
+    def addOperators(self, num, target):
 
         N = len(num)
         answers = []
+
         def recurse(index, prev_operand, current_operand, value, string):
 
             # Done processing all the digits in num
@@ -65,24 +66,34 @@ class Solution:
             if current_operand > 0:
 
                 # NO OP recursion
-                recurse(index + 1, prev_operand, current_operand, value, string)
+                recurse(index + 1, prev_operand,
+                        current_operand, value, string)
 
             # ADDITION
-            string.append('+'); string.append(str_op)
-            recurse(index + 1, current_operand, 0, value + current_operand, string)
-            string.pop();string.pop()
+            string.append('+')
+            string.append(str_op)
+            recurse(index + 1, current_operand, 0,
+                    value + current_operand, string)
+            string.pop()
+            string.pop()
 
             # Can subtract or multiply only if there are some previous operands
             if string:
 
                 # SUBTRACTION
-                string.append('-'); string.append(str_op)
-                recurse(index + 1, -current_operand, 0, value - current_operand, string)
-                string.pop();string.pop()
+                string.append('-')
+                string.append(str_op)
+                recurse(index + 1, -current_operand, 0,
+                        value - current_operand, string)
+                string.pop()
+                string.pop()
 
                 # MULTIPLICATION
-                string.append('*'); string.append(str_op)
-                recurse(index + 1, current_operand * prev_operand, 0, value - prev_operand + (current_operand * prev_operand), string)
-                string.pop();string.pop()
-        recurse(0, 0, 0, 0, [])    
+                string.append('*')
+                string.append(str_op)
+                recurse(index + 1, current_operand * prev_operand, 0, value -
+                        prev_operand + (current_operand * prev_operand), string)
+                string.pop()
+                string.pop()
+        recurse(0, 0, 0, 0, [])
         return answers
