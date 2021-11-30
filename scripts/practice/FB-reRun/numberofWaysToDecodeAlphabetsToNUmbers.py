@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 
 Count Possible Decodings of a given Digit Sequence
@@ -19,7 +20,7 @@ An empty digit sequence is considered to have one decoding. It may be assumed th
 # Recursive implementation of numDecodings
 
 
-def numDecodingsHelper(s: str, n: int) -> int:
+def numDecodingsHelper(s, n):
     if n == 0 or n == 1:
         return 1
     count = 0
@@ -39,7 +40,7 @@ def numDecodings(s):
 
 
 # Driver code
-digits = "1234"
+digits = "12345"
 print("Count is ", numDecodings(digits))
 
 # A Dynamic Programming based Python3
