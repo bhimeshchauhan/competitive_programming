@@ -5,7 +5,7 @@
 
 import math
 class Solution:
-    def coinChange(self, coins: List[int], amount: int) -> int:
+    def coinChange(self, coins, amount):
         '''
         Logic, well at most index would be at index amount times. Also, it would be the same for every index
         So normally this is O(3^n), but since im guaranteeing to cache, the max possibilities of the key in cache is index*amount, so O(S*N)
