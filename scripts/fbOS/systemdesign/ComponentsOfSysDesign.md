@@ -6,7 +6,6 @@
 ## Problem Statement
 
 - The system design is based on the following requirements:
-- The system must be able to handle a large number of users.
 
 ## Functional Requirements
 
