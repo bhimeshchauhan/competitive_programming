@@ -5,8 +5,6 @@
 
 ## Problem Statement
 
-- The system design is based on the following requirements:
-
 ## Functional Requirements
 
 - Write down verbs
@@ -14,6 +12,12 @@
 - Make several iterations
 
 ## Non Functional Requirements
+
+## Back of the Envelope Calculations
+
+## API design
+
+## Data Model
 
 ## High level design
 
