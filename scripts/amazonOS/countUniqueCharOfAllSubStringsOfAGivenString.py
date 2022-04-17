@@ -36,11 +36,32 @@ s consists of uppercase English letters only.
 
 """
 
+from collections import *
+
+
 class Solution:
     def uniqueLetterString(self, s: str) -> int:
-        
+        # key: letter
+        # value: list of indexes where the letter exists
+        letter_index = defaultdict(list)
+        for index, c in enumerate(s):
+            letter_index[c].append(index)
+        n = len(s)
+        res = 0
+        for c in letter_index:
+            idxlist = letter_index[c]
+            for i in range(len(idxlist)):
+                """
+                    For example, if the given string is "CABCBC", the second "C" is counted in the substrings "C", "BC", "ABC", "CB", "BCB", "ABCB". The number of such substrings is 6 which is same as (the number of characters between the first "C" and the second "C" + 1)*(the number of characters between the second "C" and the third "C" + 1).
+                    l = (the number of characters between the first "C" and the second "C" + 1)
+                    r = (the number of characters between the second "C" and the third "C" + 1)
+                """
+                l = idxlist[i]-(idxlist[i-1] if i != 0 else -1)
+                r = (idxlist[i+1] if i+1 != len(idxlist) else n) - idxlist[i]
+                res += l*r
+        return res
 
 
 if __name__ == "__main__":
-    s = "ABC"
-    Solution().uniqueLetterString(s)
+    s = "LEETCODE"
+    print(Solution().uniqueLetterString(s))

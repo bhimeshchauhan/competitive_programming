@@ -1,5 +1,21 @@
 {
     "workbench.colorTheme": "Abyss",
+    "saveAndRun": {
+        "commands": [
+          {
+            "match": ".py",
+            "cmd": "/usr/bin/python3 ${file}",
+            "useShortcut": false,
+            "silent": false
+          },
+          {
+            "match": "\\.txt$",
+            "cmd": "echo 'I am a .txt file ${file}.'",
+            "useShortcut": false,
+            "silent": false
+          }
+        ]
+    },
     "cSpell.words": [
         "rtype"
     ]
