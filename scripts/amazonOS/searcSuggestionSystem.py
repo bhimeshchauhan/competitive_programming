@@ -12,11 +12,11 @@ Example 1:
 
 Input: products = ["mobile","mouse","moneypot","monitor","mousepad"], searchWord = "mouse"
 Output: [
-["mobile","moneypot","monitor"],
-["mobile","moneypot","monitor"],
-["mouse","mousepad"],
-["mouse","mousepad"],
-["mouse","mousepad"]
+    ["mobile","moneypot","monitor"],
+    ["mobile","moneypot","monitor"],
+    ["mouse","mousepad"],
+    ["mouse","mousepad"],
+    ["mouse","mousepad"]
 ]
 
 Explanation: products sorted lexicographically = ["mobile","moneypot","monitor","mouse","mousepad"]
