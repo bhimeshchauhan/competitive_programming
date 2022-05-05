@@ -27,6 +27,11 @@ Follow up: What if the inputs contain Unicode characters? How would you adapt yo
 
 """
 
+"""
+Space: O(1)
+Time: O(s) for count char in string
+"""
+
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
