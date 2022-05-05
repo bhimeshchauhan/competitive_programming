@@ -65,6 +65,11 @@ if __name__ == "__main__":
 
 # Divide and Conquer
 
+"""
+Time: O(NlogN)
+Space: O(logN)
+"""
+
 
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
