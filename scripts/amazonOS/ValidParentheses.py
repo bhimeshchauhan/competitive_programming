@@ -41,17 +41,22 @@ Space Complexity: O(constant with 3 bracket pairs) + O(length of the string)
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        bPair={
-            '(':')',
-            '{':'}',
-            '[':']'
+        bPair = {
+            '(': ')',
+            '{': '}',
+            '[': ']'
         }
-        stack=[]
+        stack = []
         for brace in s:
             if not stack:
                 stack.append(brace)
-            elif brace==bPair.get(stack[-1]):
+            elif brace == bPair.get(stack[-1]):
                 stack.pop()
             else:
                 stack.append(brace)
         return True if not stack else False
+
+
+if __name__ == '__main__':
+    s = "()[]{}"
+    assert Solution().isValid(s) == True
