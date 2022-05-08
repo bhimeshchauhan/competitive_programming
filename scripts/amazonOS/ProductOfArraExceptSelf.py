@@ -31,6 +31,10 @@ Follow up: Can you solve the problem in O(1) extra space complexity? (The output
 
 """
 
+"""
+Time: O(N)
+Space: O(1)
+"""
 
 from typing import List
 
