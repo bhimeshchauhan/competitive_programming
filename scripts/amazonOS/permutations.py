@@ -53,3 +53,8 @@ class Solution:
         output = []
         backtrack()
         return output
+
+
+if __name__ == "__main__":
+    nums = [1, 2, 3]
+    print(Solution().permute(nums))
