@@ -38,6 +38,9 @@ All the strings of wordDict are unique.
 """
 
 
+from typing import FrozenSet, List
+
+
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
 
