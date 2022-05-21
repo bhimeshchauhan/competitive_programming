@@ -14,7 +14,7 @@ def encode_message(message):
             else:
                 break
         """the count and the character is concatenated to the encoded string"""
-        encoded_string = encoded_string + str(count) + ch
+        encoded_string = encoded_string + ch + str(count)
         i = j + 1
     return encoded_string
 
@@ -25,8 +25,8 @@ def decode_message(our_message):
     j = 0
     # splitting the encoded message into respective counts
     while (i <= len(our_message) - 1):
-        run_count = int(our_message[i])
-        run_word = our_message[i + 1]
+        run_count = int(our_message[i+1])
+        run_word = our_message[i]
         # displaying the character multiple times specified by the count
         for j in range(run_count):
             # concatenated with the decoded message
