@@ -51,7 +51,7 @@ from typing import List
 
 
 class Solution:
-    def change(self, amount: int, coins: List[int]) -> int:
+    def change_memo(self, amount: int, coins: List[int]) -> int:
         memo = {}  # memoization
 
         def recurse(idx, rem):
@@ -72,7 +72,11 @@ class Solution:
         return recurse(0, amount)
 
 
+if __name__ == "__main__":
+    print(Solution().change_memo(amount=46, coins=[6, 10, 15]))
+
 # DP
+
 
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
