@@ -45,26 +45,29 @@ All the values of coins are unique.
 
 
 # Backtracking
+from typing import List
+
+
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
-        memo = {} # memoization
+        memo = {}  # memoization
+
         def recurse(idx, rem):
             if rem == 0:
-                return 1    
+                return 1
             if idx == len(coins):
                 return 0
             if rem < 0:
                 return 0
-            key = '{}:{}'.format(idx,rem)
+            key = '{}:{}'.format(idx, rem)
             if key in memo:
                 return memo[key]
             num_ways = 0
-            num_ways += recurse(idx, rem - coins[idx]) # use the current coin
-            num_ways += recurse(idx + 1, rem) # Don't use the current coin
+            num_ways += recurse(idx, rem - coins[idx])  # use the current coin
+            num_ways += recurse(idx + 1, rem)  # Don't use the current coin
             memo[key] = num_ways
             return memo[key]
         return recurse(0, amount)
-    
 
 
 # DP
@@ -73,7 +76,7 @@ class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
         dp = [0] * (amount + 1)
         dp[0] = 1
-        
+
         for coin in coins:
             for x in range(coin, amount + 1):
                 dp[x] += dp[x - coin]
