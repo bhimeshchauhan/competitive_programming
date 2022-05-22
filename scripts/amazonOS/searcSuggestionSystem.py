@@ -1,6 +1,6 @@
 """
 
-Search Suggestions System
+Search Suggestions System / Type ahead
 
 You are given an array of strings products and a string searchWord.
 
