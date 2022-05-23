@@ -27,9 +27,19 @@ words[i] consists of lowercase English letters.
 k is in the range [1, The number of unique words[i]]
 
 """
+
+
+"""
+
+Min heap if K is fixed
+Max heap if K is not fixed
+
+"""
+
+
+
+
 import heapq
-
-
 class Solution:
     def topKFrequent(self, words, k):
         table = {}
