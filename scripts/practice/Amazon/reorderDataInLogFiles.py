@@ -40,6 +40,9 @@ logs[i] is guaranteed to have an identifier and at least one word after the iden
 """
 
 
+from typing import List
+
+
 class Solution:
     def reorderLogFiles(self, logs: List[str]) -> List[str]:
         digit_logs = []
