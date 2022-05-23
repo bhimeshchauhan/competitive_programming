@@ -70,6 +70,7 @@ in the time complexity section. Hence, the space complexity is O(N).
 
 
 import heapq
+from typing import List
 class Solution:
     def minMeetingRooms(self, intervals):
 
