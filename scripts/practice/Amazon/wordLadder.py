@@ -84,7 +84,7 @@ the total number of words in the input word list.
 
 - For each word in the word list, we iterate over its length to find all
 the intermediate words corresponding to it. Since the length of each word
-is MM and we have NN words, the total number of iterations the algorithm takes
+is M and we have N words, the total number of iterations the algorithm takes
 to create all_combo_dict is M×N. Additionally, forming each of the 
 intermediate word takes O(M) time because of the substring operation used 
 to create the new string. This adds up to a complexity of O(M^2×N).
