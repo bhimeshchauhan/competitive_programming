@@ -28,12 +28,16 @@ Both l1 and l2 are sorted in non-decreasing order.
 """
 
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
 class Solution:
-    def mergeTwoLists(self, l1, l2): 
+    def mergeTwoLists(self, l1, l2):
         if l1 is None:
             return l2
         elif l2 is None:
@@ -44,4 +48,3 @@ class Solution:
         else:
             l2.next = self.mergeTwoLists(l1, l2.next)
             return l2
-        
