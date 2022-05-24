@@ -73,6 +73,7 @@ At most 50000 calls will be made to showFirstUnique and add.
 # Brute force
 
 from collections import deque
+from typing import List
 
 
 class FirstUnique:
