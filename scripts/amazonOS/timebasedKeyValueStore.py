@@ -42,6 +42,30 @@ At most 2 * 105 calls will be made to set and get.
 
 
 from collections import defaultdict
+from collections import defaultdict as ddict
+from heapq import heappush, heappop
+
+
+class TimeMap:
+
+    def __init__(self):
+        self.hashmap = ddict(list)
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        heappush(self.hashmap[key], (-timestamp, timestamp, value))
+
+    def get(self, key: str, timestamp: int) -> str:
+        ls = self.hashmap[key]
+        tmp = []
+        result = ""
+        while ls:
+            _, stamp, value = heappop(ls)
+            heappush(tmp, (-stamp, stamp, value))
+            if stamp <= timestamp:
+                result = value
+                break
+        self.hashmap[key] = tmp
+        return result
 
 
 class TimeMap:
