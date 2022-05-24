@@ -1,7 +1,22 @@
+"""
+
+1. push() : Insert the element into Stack and assign the top pointer to the element.
+2. pop() : Return top element from the Stack and move the top pointer to the
+second element of the Stack.
+3. top() : Return the top element.
+4. size() : Return the Size of the Stack.
+5. isEmpty() : Return True if Stack is Empty else return False.
+6. printstack() : Print all elements of the stack.
+
+
+"""
+
 # A complete working Python program to demonstrate all
 # stack operations using a doubly linked list
 
 # Node class
+
+
 class Node:
 
     # Function to initialise the node object
