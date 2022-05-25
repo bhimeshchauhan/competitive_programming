@@ -106,4 +106,3 @@ if __name__ == "__main__":
     n = len(arr)
     print(oddElement(arr, n))
 
-# This code is contributed by vikkycirus
