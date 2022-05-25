@@ -2,9 +2,6 @@
 
 maximal-square
 
-
-
-
 """
 
 
