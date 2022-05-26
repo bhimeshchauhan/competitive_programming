@@ -8,7 +8,7 @@ class Solution:
         """
 
 #         1 -> 0 = -1 ( consider while neighbour counting one's)
-#         0 -> 1 = -2 (don't consider while neighbour counting one's
+#         0 -> 1 = -2 (don't consider while neighbour counting one's)
 
         for row in range(len(board)):
             for column in range(len(board[0])):
