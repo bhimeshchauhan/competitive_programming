@@ -1,79 +1,147 @@
-from random import randint, seed
-
-
-class Node:
-    def __init__(self, height=0, elem=None):
-        self.elem = elem
-        self.next = [None]*height
+from random import random
 
 
 class SkipList:
+    """
+    Skip-List.
+    """
+
+    class Element:
+        """
+        Skip-List element.
+        """
+
+        def __init__(self, value, height):
+            """
+            Generates a skip-list element.
+            """
+            self.value = value
+            self.quantity = 1
+            self.next = [None]*height
 
     def __init__(self):
-        self.head = Node()
-        self.len = 0
-        self.maxHeight = 0
+        """
+        Generates an empty skip-list.
+        """
+        self.head = self.Element(float("-inf"), height=0)
+        self.tail = self.Element(float("inf"),  height=0)
+        self.numElements = 0
+        self.head.next.append(self.tail)
 
-    def __len__(self):
-        return self.len
-
-    def find(self, elem, update=None):
-        if update == None:
-            update = self.updateList(elem)
-        if len(update) > 0:
-            item = update[0].next[0]
-            if item != None and item.elem == elem:
-                return item
-        return None
-
-    def contains(self, elem, update=None):
-        return self.find(elem, update) != None
-
-    def randomHeight(self):
+    @staticmethod
+    def randomHeight():
+        """
+        Generates a random height with distribution
+        Prob(h = k) = 2^(-k).
+        """
         height = 1
-        while randint(1, 2) != 1:
+        while random() < 0.5:
             height += 1
         return height
 
-    def updateList(self, elem):
-        update = [None]*self.maxHeight
-        x = self.head
-        for i in reversed(range(self.maxHeight)):
-            while x.next[i] != None and x.next[i].elem < elem:
-                x = x.next[i]
-            update[i] = x
-        return update
+    def searchPath(self, value):
+        """
+        Let path be the path returned by this method,
+        then path[h] stores the last element visited
+        at height h during the search of value through
+        the skip-list.
+        """
+        element = self.head
+        path = [None]*len(self.head.next)
+        for h in range(len(self.head.next)-1, -1, -1):
+            while element.next[h].value < value:
+                element = element.next[h]
+            path[h] = element
+        return path
 
-    def insert(self, elem):
+    def search(self, value):
+        """
+        Returns the element containing value, if
+        value is present in the skip-list. Returns
+        None otherwise.
+        """
+        predecessor = self.searchPath(value)
+        target = predecessor[0].next[0]
+        return target if target.value == value else None
 
-        _node = Node(self.randomHeight(), elem)
+    def __contains__(self, value):
+        """
+        Checks whether value is present in the skip-list.
+        """
+        return self.search(value) != None
 
-        self.maxHeight = max(self.maxHeight, len(_node.next))
-        while len(self.head.next) < len(_node.next):
-            self.head.next.append(None)
+    def insert(self, value):
+        """
+        Inserts value into the skip-list.
+        """
+        predecessor = self.searchPath(value)
+        target = predecessor[0].next[0]
+        self.numElements += 1
 
-        update = self.updateList(elem)
-        if self.find(elem, update) == None:
-            for i in range(len(_node.next)):
-                _node.next[i] = update[i].next[i]
-                update[i].next[i] = _node
-            self.len += 1
+        if target.value == value:
+            target.quantity += 1
+            return
 
-    def remove(self, elem):
+        height = self.randomHeight()
+        newElement = self.Element(value, height)
 
-        update = self.updateList(elem)
-        x = self.find(elem, update)
-        if x != None:
-            for i in reversed(range(len(x.next))):
-                update[i].next[i] = x.next[i]
-                if self.head.next[i] == None:
-                    self.maxHeight -= 1
-            self.len -= 1
+        for h in range(len(predecessor), height):
+            self.head.next.append(self.tail)
+            predecessor.append(self.head)
 
-    def printList(self):
-        for i in range(len(self.head.next)-1, -1, -1):
-            x = self.head
-            while x.next[i] != None:
-                print( x.next[i].elem,
-                x = x.next[i])
-            print('')
+        for h in range(height):
+            newElement.next[h] = predecessor[h].next[h]
+            predecessor[h].next[h] = newElement
+
+    def delete(self, value):
+        """
+        Deletes one entry of value in the skip-list.
+        """
+        predecessor = self.searchPath(value)
+        target = predecessor[0].next[0]
+
+        if target.value != value:
+            return
+
+        self.numElements -= 1
+
+        if target.quantity > 1:
+            target.quantity -= 1
+            return
+
+        for h in range(len(target.next)):
+            predecessor[h].next[h] = target.next[h]
+            if predecessor[h] is self.head and predecessor[h].next[h] is self.tail:
+                del self.head.next[max(1, h):]
+                break
+
+    def __iter__(self):
+        """
+        Iterator over the element in the skip-list.
+        """
+        element = self.head.next[0]
+        while len(element.next) > 0:
+            yield element
+            element = element.next[0]
+
+    def __len__(self):
+        """
+        Returns the number of unique elements in
+        the skip-list.
+        """
+        return self.numElements
+
+    def _repr_level(self, l):
+        """
+        Represents the l-th level in the skip-list.
+        """
+        return" ".join(["-inf"]
+                       + ["-"*len(str(x.value)) if l > len(x.next) -
+                          1 else str(x.value) for x in self]
+                       + ["+inf"])
+
+    def __repr__(self):
+        """
+        Represents the skip-list.
+        """
+        return "\n".join(self._repr_level(l) for l in range(len(self.head.next)-1, -1, -1))
